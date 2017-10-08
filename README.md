@@ -3,7 +3,7 @@ A class that helps to evaluate the sensitivity and precision of the results data
 
 
 
-## How to Mearsure
+## How to Measure
 ![Diagram of Sample Data](/assets/diagram_of_sample_data.svg?sanitize=true)
 Note that the y-axis grows downward, as shown in the diagram above.
 
