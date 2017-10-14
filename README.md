@@ -9,7 +9,7 @@ Note that the y-axis grows downward, as shown in the diagram above.
 
 The white box is the correct answer (Ground Truth), and the red box is detected by your algorithm. The red box that intersects the rightmost white box intersects only a small part of the white box.
 
-Evaluator calculates how much the intersection occupies in the GT, and if it exceeds the specified value, it is considered TP. Here, the specified value is called *Accept Rate*.
+Evaluator calculates the ratio of area of (white ∩ red) to area of (white ∪ red)  and if it exceeds the specified value, it is considered TP. Here, the specified value is called *Accept Rate*.
 
 If several red boxes cross the same white box, the red box that occupies most of the white box is the TP.
 

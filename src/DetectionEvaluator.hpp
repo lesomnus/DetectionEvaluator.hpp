@@ -46,6 +46,12 @@ namespace smns {
             double recall()         const { return tpr(); }
             double sensitivity()    const { return tpr(); }
 
+            double F_measure() const {
+                const auto ppv = this->ppv();
+                const auto tpr = this->tpr();
+                return 2 * (ppv * tpr) / (ppv + tpr);
+            }
+
             Result operator + (const Result& other) const {
                 Result rst;
                 for (auto i = 0; i < RESULT_SIZE; ++i)
@@ -76,9 +82,10 @@ namespace smns {
                 Items dropped;              // Set of dropped candidate
 
                 for (auto& candidate : *GT.danglers) {
-                    const double intersect_rate =
-                        GT.self.intersect(candidate.self)
-                        .size() / size_of_GT;
+                    const double size_of_candidate = candidate.self.size();
+                    const double size_of_intersect = GT.self.intersect(candidate.self).size();
+                    const double intersect_rate = size_of_intersect /
+                        (size_of_candidate - size_of_intersect + size_of_GT);
 
                     // Dose candidate satisfies the condition
                     if (intersect_rate < _th_accept_rate) {
