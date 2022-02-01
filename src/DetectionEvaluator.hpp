@@ -126,8 +126,7 @@ namespace smns {
                     const size_t intersect_size = GT.self.intersect(sbj.self).size();
 
                     if (intersect_size < evaluated) {
-                        accepted = &GT;
-                        evaluated = intersect_size;
+                        dropped.push_back(GT);
                     }
                     else {
                         if (accepted)
